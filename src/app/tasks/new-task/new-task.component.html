@@ -1,0 +1,28 @@
+<div class="overlay px-6 absolute bg-gray-800 w-full">
+
+    <div class=" p-4  rounded-md container mx-auto bg-slate-600 max-w-96">
+        <div class=" mx-auto ">
+            <div class="">
+                <h2 class="font-serif text-gray-200">Add Task</h2>
+            <form (ngSubmit)="onSubmit()" >
+                <div class="flex flex-col space-y-2 mt-4 ">
+                    <label class=" text-white">Title</label>
+                    <input type="text" class="rounded-md p-1 outline-none px-2" name="title" spellcheck="false" [(ngModel)]="title">
+                </div>
+                <div class="flex flex-col space-y-2 mt-4">
+                    <label class=" text-white">Description</label>
+                    <textarea type="text" class="rounded-md p-1 outline-none px-2" spellcheck="false" name="description" rows="3" [(ngModel)]="description"></textarea>
+                </div>
+                <div class="flex flex-col  space-y-2 mt-4">
+                    <label class=" text-white">Due Date</label>
+                    <input type="datetime-local" class="rounded-md p-1 outline-none px-2" spellcheck="false" name="dueDate" [(ngModel)]="dueDate" />
+                </div>
+                <div class="flex justify-between  pt-4">
+                    <button type="button" class="bg-orange-400 space-x-6 px-3 rounded-md p-1 text-white" (click)="onCancel()">cancel</button>
+                    <button type="submit" class="bg-blue-400 px-3 rounded-md p-1 text-white" >save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

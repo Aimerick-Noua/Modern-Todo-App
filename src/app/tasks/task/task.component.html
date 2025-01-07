@@ -1,0 +1,57 @@
+<!-- <div class=" text-white m-3 w-full rounded-lg p-3" [class]="">
+    <div>
+        <h2 class="text-2xl uppercase">{{task().title}}</h2>
+        <h4 class="text-gray-200">{{task().description}}</h4>
+         <p class="text-gray-200">{{task().dueDate}}</p>
+         <button class="text-gray-200 p-1 rounded-sm bg-slate-500">mark as completed</button>
+    </div>
+</div> -->
+<div class="bg-gray-700 mt-4 p-4 text-gray-300 rounded-md container mx-auto "
+    [class]="task.isCompleted ? 'bg-slate-900 text-gray-500' :'' ">
+    <div class="container  mx-auto ">
+        @if(toggleDetails()){
+        <button class="float-end" (click)="onToggleTaskDetails()">
+            <img src="up.svg" alt="">
+        </button>
+        }@else {
+        <button class="float-end" (click)="onToggleTaskDetails()">
+            <img src="down.svg" alt="">
+        </button>
+        }
+
+
+        <div class="flex justify-between gap-4 items-start" [class.gap-1]="toggleDetails()">
+
+
+            <label class="custom-checkbox w-[1/3]">
+                <input name="dummy" type="checkbox" [checked]="task.isCompleted" (click)="markedCompleted()">
+                <span class="checkmark"></span>
+            </label>
+            <div class="w-[450px] ">
+                <h2 class="text-xl " [class.line-through]="task.isCompleted">{{task.title}}</h2>
+                @if (toggleDetails()) {
+                    <div class="">
+                        <span class="text-md text-gray-400 w-14 " [class.line-through]="task.isCompleted">
+                            {{task.description}}
+                        </span>
+                    </div>
+                
+                }
+
+            </div>
+            <div class="flex  w-[150px]" [class]="toggleDetails()? 'flex-col gap-4 mt-4 items-center':''">
+                <p class="text-sm">{{task.dueDate | date}}</p>
+                <p class="text-sm">⏰{{task.dueDate | date:'hh:mm'}}</p>
+            </div>
+
+            <div class=" w-[50px]" [class]="toggleDetails()? 'flex-col gap-4 mt-4 items-center':''">
+
+                <button (click)="onDelete()">
+                    <img src="delete.svg" alt="">
+                </button>
+                <button (click)="onEdit()">
+                    <img src="PencilAlt.svg" alt="">
+                </button>
+            </div>
+        </div>
+    </div>

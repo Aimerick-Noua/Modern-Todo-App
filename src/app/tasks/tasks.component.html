@@ -1,0 +1,61 @@
+<div class="w-full bg-gray-800 h-screen relative">
+    <app-header />
+    <div class=" p-4 text-gray-300 rounded-md md:container md:mx-auto ">
+        <div class="container lg:w-1/2 mx-auto ">
+            <div class="flex flex-col">
+                @if (!showForm()) {
+                    
+                    <div class="mb-4">
+                        <button class="bg-blue-600 mx-3 flex gap-2 float-right w-[1/2] items-center p-2 rounded-md text-xs font-semibold"
+                        (click)="onToggleForm()">
+                        <span>Create </span>
+                        <span>⨁{{' '}} </span>
+                    </button>
+                    </div>
+                    
+                <app-search (searchTask)="onSearch($event)"/>
+                }
+            </div>
+        </div>
+
+    </div>
+    @if (showForm()) {
+    <app-new-task (add)="onAdd($event)" (showform)="onCloseForm()" [data]="dataToEdit()" (update)="dataToUpdate($event)" />
+    }@else {
+        <div class=" p-4 text-gray-300 rounded-md container mx-auto ">
+            <div class="container lg:w-1/2 mx-auto ">
+                <div class="flex justify-between">
+                    @if (tasks().length>0) {
+                    <div class="flex gap-2">
+                        <span class="text-blue-200 font-semibold">Total Tasks</span>
+                        <span>{{tasks().length}}</span>
+                    </div>
+        
+        
+                    <div class="mx-2 flex gap-2">
+                        <span class="text-blue-200 font-semibold">Completed</span>
+                        <span>{{completedTask()}}/{{tasks().length}}</span>
+                    </div>
+                    }
+                </div>
+                <div [class]=" tasks().length>4? 'h-[500px] md:h-[400px] overflow-y-scroll':''">
+
+                    @for (task of filterdTask(); track task.id) {
+                        <app-task [task]="task" (isCompleted)="markCompleted(task.id)"  (deleteTask)="onTaskDelete(task.id)" (editTask)="onEditTask(task.id)"/>
+                    }@empty {
+                        <div class="items-center mt-52">
+                            <div class="flex flex-col justify-center items-center">
+                                <img src="Clipboard.svg" alt="" width="50px" height="50px" class="mb-6">
+                                <span class=" text-xl text-gray-600">Your task list is empty</span>
+                                <span class="text-gray-600 text-sm"> Create new tasks to organize your work</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+        
+            </div>
+        </div>
+    }
+</div>
+
+
