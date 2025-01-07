@@ -33,7 +33,7 @@ To run the app locally, ensure you have the following installed:
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/todo-app.git
+   git clone https://github.com/Aimerick-Noua/Modern-Todo-App.git
    ```
 2. Navigate to the project directory:
    ```bash
@@ -109,6 +109,6 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 ## Contact
 For any inquiries or feedback, please contact:
-- **Email**: your.email@example.com
-- **GitHub**: [your-username](https://github.com/your-username)
+- **Email**: aimericknoua4@gmail.com
+- **GitHub Repository**: [Modern ToDo App](https://github.com/Aimerick-Noua/Modern-Todo-App)
 
