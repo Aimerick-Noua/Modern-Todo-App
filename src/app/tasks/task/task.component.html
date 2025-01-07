@@ -6,7 +6,7 @@
          <button class="text-gray-200 p-1 rounded-sm bg-slate-500">mark as completed</button>
     </div>
 </div> -->
-<div class="bg-gray-700 mt-4 p-4 relative text-gray-300 rounded-md container mx-auto h-[100px]"
+<div class="bg-gray-700 mt-4 p-6  text-gray-300 rounded-md container mx-auto h-auto"
     [class]="task.isCompleted ? 'bg-slate-900 text-gray-500' :'' ">
     <div class="container  mx-auto ">
         @if(toggleDetails()){
@@ -18,7 +18,7 @@
             <img src="down.svg" alt="">
         </button>
         }
-        <div class="w-[40px] p-0 md:mt-4 gap-4 float-end flex flex-col " [class]="toggleDetails()? 'flex-col gap-4 mt-4 items-center':''">
+        <div class="w-[40px] p-0 gap-2 md:mt-4  float-end flex flex-col " [class]="toggleDetails()? 'flex-col gap-4 mt-4 items-center':''">
 
             <button (click)="onDelete()" >
                 <img src="delete.svg" >
@@ -36,12 +36,15 @@
                 <span class="checkmark"></span>
             </label>
             <div class="w-[450px] ">
-                <h2 class="text-xl " [class.line-through]="task.isCompleted">{{task.title}}</h2>
+                <h2 class="text-xl " [class.line-through]="task.isCompleted">{{task.title}}  <span class="text-sm text-blue-400 md:hidden">| ⏰{{task.dueDate | date:'hh:mm'}}</span>
+                </h2>
                 @if (toggleDetails()) {
                     <div class="">
                         <span class="text-md text-gray-400 w-14 " [class.line-through]="task.isCompleted">
                             {{task.description}}
-                        </span>
+                        </span>           
+                        <p class="text-sm  md:hidden">⛔ {{task.dueDate | date}}</p>
+
                     </div>
                 
                 }
